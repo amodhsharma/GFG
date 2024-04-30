@@ -1,0 +1,47 @@
+//{ Driver Code Starts
+// Initial Template for Java
+
+import java.io.*;
+import java.util.*;
+
+class GFG {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br =
+            new BufferedReader(new InputStreamReader(System.in));
+
+        int t = Integer.parseInt(br.readLine().trim());
+        while (t-- > 0) {
+            int n = Integer.parseInt(br.readLine().trim());
+            String[] str = br.readLine().trim().split(" ");
+            int[] array = new int[n - 1];
+            for (int i = 0; i < n - 1; i++) {
+                array[i] = Integer.parseInt(str[i]);
+            }
+            Solution sln = new Solution();
+            System.out.println(sln.missingNumber(array, n));
+        }
+    }
+}
+// } Driver Code Ends
+
+
+// User function Template for Java
+
+class Solution {
+    int missingNumber(int array[], int n) {
+        int sum  = 0;   //initialiiy asssuming the sum(missing number ) as 0
+        int arrsum=0;   //sum of all elements in array
+         sum  = n*(n+1)/2;  //represents the sum of first n natural numbers
+         //just declare and nothing else 
+          
+//        for(int i:array.length()-1){ why is this line wrong?
+        for(int i =0;i<array.length; i++){
+            //if the iterating elemtn i is starting from 0 then < will be used and not <=
+            // sum-=array[i];
+            arrsum += array[i];
+        }
+         sum  = n*(n+1)/2 - arrsum;
+         
+        return sum;
+    }
+    }
